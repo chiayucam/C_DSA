@@ -35,6 +35,17 @@ void initializeArray()
     }
 }
 
+void printHeap()
+{
+    for (int i = 0; i < MAXSIZE; i++)
+    {
+        if (heap[i] != -1)
+        {
+            printf("%d-[%d]\n", heap[i], i);
+        }
+    }
+}
+
 void main()
 {
     initializeArray();
@@ -44,11 +55,5 @@ void main()
     insertHeap(3);
     insertHeap(9);
     insertHeap(4);
-    for (int i = 0; i<MAXSIZE; i++)
-    {
-        if (heap[i] != -1)
-        {
-            printf("%d-[%d]\n", heap[i], i);
-        }
-    }
+    printHeap();
 }
