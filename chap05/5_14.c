@@ -52,7 +52,8 @@ void deleteHeap()
             heap[i] = heap[j];
             i = j;
         }
-        heap[i] = -1;
+        heap[i] = heap[n + 1];
+        heap[n + 1] = -1;
     }
 }
 
