@@ -30,11 +30,9 @@ void bubbleSort(int array_length, int *input_array)
     }
 }
 
-void merge(int *rand_array_c, int *rand_array_a, int array_length_a, int *rand_array_b, int array_length_b)
+void merge(int *rand_array_c, int k, int *rand_array_a, int i, int array_length_a, int *rand_array_b, int j, int array_length_b)
 {
-    int i, j, k;
-    i = j = k = 0;
-    while ((i <= array_length_a) && (j <= array_length_b))
+    while ((i < array_length_a) && (j < array_length_b))
     {
         if (rand_array_a[i] <= rand_array_b[j])
         {
@@ -45,11 +43,11 @@ void merge(int *rand_array_c, int *rand_array_a, int array_length_a, int *rand_a
             rand_array_c[k++] = rand_array_b[j++];
         }
     }
-    while (i <= array_length_a)
+    while (i < array_length_a)
     {
         rand_array_c[k++] = rand_array_a[i++];
     }
-    while (j <= array_length_b)
+    while (j < array_length_b)
     {
         rand_array_c[k++] = rand_array_b[j++];
     }
@@ -80,10 +78,10 @@ void main()
     printArray(array_length_b, rand_array_b);
 
     
-    int *rand_array_c = (int *)malloc((array_length_a + array_length_b + 1) * sizeof(int));
+    int *rand_array_c = (int *)malloc((array_length_a + array_length_b +1) * sizeof(int));
     int array_length_c = array_length_a + array_length_b;
 
-    merge(rand_array_c, rand_array_a, array_length_a, rand_array_b, array_length_b);
+    merge(rand_array_c, 0, rand_array_a, 0, array_length_a, rand_array_b, 0, array_length_b);
     printf("\nMerged sorted array C:\n");
     printArray(array_length_c, rand_array_c);
 }
