@@ -9,7 +9,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-void generateRandArray(int array_length, int *rand_array)
+void generateRandArray(int array_length, int rand_array[])
 {
     srand(time(NULL));
     for (int i = 0; i < array_length; i++)
@@ -18,7 +18,7 @@ void generateRandArray(int array_length, int *rand_array)
     }
 }
 
-void printArray(int array_length, int *input_array)
+void printArray(int array_length, int input_array[])
 {
     for (int i = 0; i < array_length; i++)
     {
@@ -27,7 +27,7 @@ void printArray(int array_length, int *input_array)
 }
 
 
-void shellSort(int array_length, int *input_array)
+void shellSort(int array_length, int input_array[])
 {
     int j, temp;
     for (int gap = array_length/2; gap>0; gap/=2)
@@ -36,10 +36,10 @@ void shellSort(int array_length, int *input_array)
         {
             temp = input_array[i];
             j = i;
-            while ((input_array[j - gap] > temp) && (j > 0))
+            while ((input_array[j - gap] > temp) && (j >= gap))
             {
                 input_array[j] = input_array[j - gap];
-                j = j - gap;
+                j -= gap;
             }
             input_array[j] = temp;
         }
@@ -51,7 +51,7 @@ void shellSort(int array_length, int *input_array)
 
 void main()
 {
-    int rand_array[8];
+    int rand_array[16];
     int array_length = sizeof(rand_array) / sizeof(rand_array[0]);
     generateRandArray(array_length, rand_array);
     printf("Random array:\n");
